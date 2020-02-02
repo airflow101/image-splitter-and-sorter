@@ -4,6 +4,20 @@ from PIL import ImageTk, Image
 
 directory_of_images = sys.argv[1]
 
+folder_of_positive = "Positive"
+folder_of_negative = "Negative"
+
+directory_of_positive = os.path.join(directory_of_images, folder_of_positive)
+directory_of_negative = os.path.join(directory_of_images, folder_of_negative)
+
+if not os.path.exists(directory_of_positive):
+    os.mkdir(directory_of_positive)
+
+if not os.path.exists(directory_of_negative):
+    os.mkdir(directory_of_negative)
+
+
+
 def main():
     #Root
     root = Tk()
