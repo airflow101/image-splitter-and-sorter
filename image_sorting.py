@@ -5,20 +5,24 @@ from PIL import ImageTk, Image
 directory_of_images = sys.argv[1]
 
 def main():
+    #Root
     root = Tk()
-
-    #Labels
-    myLabel = Label(root, text="Image Sorter")
+    root.title("Image Sorting")
 
     #Buttons
     positive_button = Button(root, text = "Positive\n(Cracks)"
-    , pady = 10, width = 20, bg = "green", command = positive())
+    , pady = 5, width = 15, bg = "green", command = positive())
     negative_button = Button(root, text = "Negative\n(No Cracks)"
-    , pady = 10, width = 20, bg = "red", command = negative())
+    , pady = 5, width = 15, bg = "red", command = negative())
+
+    #Image Viwer
+    image = ImageTk.PhotoImage(Image.open("Result_227\IMG_0056_00.JPG"))
+    image_view = Label(image = image)
 
     #Positioning
-    positive_button.grid(row = 2, column = 0)
-    negative_button.grid(row = 2, column = 3)
+    image_view.grid(row = 0, column = 0, columnspan = 2)
+    positive_button.grid(row = 1, column = 0)
+    negative_button.grid(row = 1, column = 1)
 
     root.mainloop()
 
