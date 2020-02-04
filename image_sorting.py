@@ -28,9 +28,23 @@ if not os.path.exists(directory_of_negative):
 root = Tk()
 root.title("Image Sorting")
 
-#Image Viwer
+#Image Viewer
 image = 0
 image_view = 0
+
+#Label
+number_indicator = Label(text = "Images left =\n" + str(number_of_files))
+file_indicator = Label(text = "Filename:\n" + str(filenames_list[current_files])[:-4])
+
+def refresh_status():
+    global file_indicator
+    global number_indicator
+    file_indicator.grid_forget()
+    number_indicator.grid_forget()
+    number_indicator = Label(text = "Images left =\n" + str(number_of_files))
+    file_indicator = Label(text = "Filename:\n" + str(filenames_list[current_files])[:-4])
+    file_indicator.grid(row = 3 ,column = 0)
+    number_indicator.grid(row = 3, column = 1)
 
 def change_image(index):
     global image
@@ -63,6 +77,7 @@ def positive():
     number_of_files -= 1
     if number_of_files == current_files:
         current_files = 0
+    refresh_status()
     change_image(current_files)
 
 def negative():
@@ -75,6 +90,7 @@ def negative():
     number_of_files -= 1
     if number_of_files == current_files:
         current_files = 0
+    refresh_status()
     change_image(current_files)
 
 def next():
@@ -113,5 +129,7 @@ positive_button.grid(row = 1, column = 0)
 negative_button.grid(row = 1, column = 1)
 next_button.grid(row = 2, column = 1)
 previous_button.grid(row = 2, column = 0)
+file_indicator.grid(row = 3 ,column = 0)
+number_indicator.grid(row = 3, column = 1)
 
 root.mainloop()
