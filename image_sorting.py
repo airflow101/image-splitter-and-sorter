@@ -6,7 +6,7 @@ directory_of_images = sys.argv[1]
 
 filenames_list = []
 for filename in os.listdir(directory_of_images):
-    if (not filename.endswith("_n.JPG")) and (not filename.endswith("_p.JPG")) and filename.endswith(".JPG"):
+    if (not filename.endswith("_n.JPG")) and (not filename.endswith("_p.JPG")) and (not filename.endswith("_p.jpg")) and (not filename.endswith("_n.jpg")) and (filename.endswith(".JPG") or filename.endswith(".jpg")):
         filenames_list.append(filename)
 
 number_of_files = len(filenames_list)

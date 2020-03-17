@@ -23,5 +23,5 @@ def split_image(directory, filename):
             result_im.save(os.path.join(directory_of_results, filename_result))
 
 for filename in os.listdir(directory_of_originals):
-    if filename.endswith(".JPG"):
+    if filename.endswith(".JPG") or filename.endswith(".jpg"):
         split_image(directory_of_originals, filename)
